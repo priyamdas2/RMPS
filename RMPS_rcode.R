@@ -132,9 +132,9 @@ for (iii in 1:no_loops)
     possible_x_coords <-
       update_x(theta, epsilon, rho, epsilon_cut_off)
     total_lh <- rep(1, 2 * M)
-    candidate_theta <- theta
     for (kk in 1:(2 * M))
     {
+      candidate_theta <- theta
       coord_number <- ceil(kk / 2)
       if (possible_x_coords[kk] == theta[coord_number])
       {
