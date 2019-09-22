@@ -1,0 +1,7 @@
+useDynLib(RMPSH, .registration=TRUE)
+exportPattern("^[[:alpha:]]+")
+export(RMPSH_opt)
+import(Rcpp)
+import(ggmap)
+import(pracma)
+importFrom(Rcpp,sourceCpp)

@@ -1,0 +1,13 @@
+Package: RMPSH
+Type: Package
+Title: Recursive Modified Pattern Search on Hyper-rectangle
+Version: 1.0
+Date: 2019-09-21
+Author: Priyam Das
+Maintainer: Priyam Das <pdas@ncsu.edu>
+Description: RMPSH is developped for optimizing any blackbox/non-convex function on hyper-rectangular parameter space. It uses a variation of Pattern Search technique.
+License: GPL (>= 2)
+Imports: pracma,
+    Rcpp,
+    ggmap
+LinkingTo: Rcpp
