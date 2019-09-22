@@ -61,7 +61,7 @@ RMPSH_opt <-
            phi = 10 ^ (-6),
            no_runs = 1000,
            max_iter = 10000,
-           s_init = 0.5,
+           s_init = 2,
            tol_fun = 10 ^ (-6),
            tol_fun_2 = 10 ^ (-20),
            max_time = 36000,
