@@ -14,12 +14,17 @@ Instructions to run R and MATLAB code:
 _____________________________________________________________________________________________________________
 Instruction to run R package RMPSH:
 
------> Execute 
+-----> 
+# Execute 
 
 library(devtools)
 install_github("priyamdas2/RMPS/RMPSH")
 library(RMPSH)
 
+# See main function
+
+ ?RMPSH_opt
+ 
 # RUN example code
 
 g <- function(y)
