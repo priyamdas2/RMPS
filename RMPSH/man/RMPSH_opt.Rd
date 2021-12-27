@@ -9,6 +9,7 @@ RMPSH_opt(
   func,
   lb,
   ub,
+  ...,
   rho_1 = 2,
   rho_2 = 2,
   phi = 1e-06,
@@ -30,27 +31,36 @@ RMPSH_opt(
 
 \item{ub}{vector of upper bound, of same dimension as 'x0'.}
 
+\item{...}{other parameters to `func`}
+
 \item{rho_1}{'step decay rate' for the first run only (default is 2).}
 
 \item{rho_2}{'step decay rate' for second run onwards (default is 2).}
 
-\item{phi}{lower bound of 'global step size'. Default value is \eqn{10^{-6}}.}
+\item{phi}{lower bound of 'global step size'. Default value is \eqn{1e-6}.}
 
 \item{no_runs}{max number of 'runs'. Default Value is 1000.}
 
 \item{max_iter}{max number of iterations in each 'run'. Default Value is 10000.}
 
-\item{s_init}{initial  'global step size'. Default Value is 2. It must be set less than or equal to 2.}
+\item{s_init}{initial  'global step size'. Default Value is 2. It must be set
+less than or equal to 2.}
 
-\item{tol_fun}{termination tolerance on when to decrease the 'global step size'. Default Value is \eqn{10^{-6}}. For more accuracy, user may set it to smaller value
-e.g., \eqn{10^{-20}}. However, for expensive objective functions, for faster computation, user should set it to a larger value e.g, \eqn{10^{-3}}.}
+\item{tol_fun}{termination tolerance on when to decrease the 'global step
+size'. Default Value is \eqn{1e-6}. For more accuracy, user may set it to
+smaller value e.g., \eqn{1e-20}. However, for expensive objective functions,
+for faster computation, user should set it to a larger value e.g, \eqn{1e-3}.}
 
-\item{tol_fun_2}{termination tolerance on the difference of norms of solution points in two consecutive runs. Default Value is \eqn{10^{-20}}.
-However, for expensive objective functions, for faster computation, user should set it to a larger value e.g, \eqn{10^{-6}}.}
+\item{tol_fun_2}{termination tolerance on the difference of norms of solution
+points in two consecutive runs. Default Value is \eqn{1e-20}. However, for
+expensive objective functions, for faster computation, user should set it to
+a larger value e.g, \eqn{1e^-6}.}
 
-\item{max_time}{time alloted (in seconds) for execution of RMPSH. Default is 36000 secs (10 hours).}
+\item{max_time}{time alloted (in seconds) for execution of RMPSH. Default is
+36000 secs (10 hours).}
 
-\item{verbose}{Binary Command to print optimized value of objective function after each interation, 0 = no print, 1 = print. Default is 0.}
+\item{verbose}{Binary Command to print optimized value of objective function
+after each interation, 0 = no print, 1 = print. Default is 0.}
 }
 \value{
 the optimal solution point.

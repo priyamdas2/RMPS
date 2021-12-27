@@ -3,25 +3,33 @@
 #' `RMPSH_opt` can be used to minimize any non-convex blackbox function where each parameter
 #' has an upper and lower bound.
 #'
-#'
 #' @param x0 vector of initial guess provided by user.
 #' @param func the function to be optimized, should be provided by the user.
 #' @param lb vector of lower bounds, of same dimension as 'x0'.
 #' @param ub vector of upper bound, of same dimension as 'x0'.
+#' @param ... other parameters to `func`
+#' 
 #' @param rho_1 'step decay rate' for the first run only (default is 2).
 #' @param rho_2 'step decay rate' for second run onwards (default is 2).
-#' @param phi lower bound of 'global step size'. Default value is \eqn{10^{-6}}.
+#' @param phi lower bound of 'global step size'. Default value is \eqn{1e-6}.
 #' @param no_runs max number of 'runs'. Default Value is 1000.
 #' @param max_iter max number of iterations in each 'run'. Default Value is 10000.
-#' @param s_init initial  'global step size'. Default Value is 2. It must be set less than or equal to 2.
-#' @param tol_fun termination tolerance on when to decrease the 'global step size'. Default Value is \eqn{10^{-6}}. For more accuracy, user may set it to smaller value
-#' e.g., \eqn{10^{-20}}. However, for expensive objective functions, for faster computation, user should set it to a larger value e.g, \eqn{10^{-3}}.
-#' @param tol_fun_2 termination tolerance on the difference of norms of solution points in two consecutive runs. Default Value is \eqn{10^{-20}}.
-#' However, for expensive objective functions, for faster computation, user should set it to a larger value e.g, \eqn{10^{-6}}.
-#' @param max_time time alloted (in seconds) for execution of RMPSH. Default is 36000 secs (10 hours).
-#' @param verbose Binary Command to print optimized value of objective function after each interation, 0 = no print, 1 = print. Default is 0.
+#' @param s_init initial  'global step size'. Default Value is 2. It must be set
+#' less than or equal to 2. 
+#' @param tol_fun termination tolerance on when to decrease the 'global step
+#' size'. Default Value is \eqn{1e-6}. For more accuracy, user may set it to
+#' smaller value e.g., \eqn{1e-20}. However, for expensive objective functions,
+#' for faster computation, user should set it to a larger value e.g, \eqn{1e-3}.
+#' @param tol_fun_2 termination tolerance on the difference of norms of solution
+#' points in two consecutive runs. Default Value is \eqn{1e-20}. However, for
+#' expensive objective functions, for faster computation, user should set it to
+#' a larger value e.g, \eqn{1e^-6}. 
+#' @param max_time time alloted (in seconds) for execution of RMPSH. Default is
+#' 36000 secs (10 hours). 
+#' @param verbose Binary Command to print optimized value of objective function
+#' after each interation, 0 = no print, 1 = print. Default is 0.
+#' 
 #' @return the optimal solution point.
-#'
 #' @examples
 #' g <- function(y) {
 #'   return(-20 * exp(-0.2 * sqrt(0.5 * (y[1]^2 + y[2]^2)))
@@ -52,6 +60,7 @@ RMPSH_opt <-
            func,
            lb,
            ub,
+           ..., 
            rho_1 = 2,
            rho_2 = 2,
            phi = 1e-6,
@@ -63,7 +72,7 @@ RMPSH_opt <-
            max_time = 36000,
            verbose = 0) {
     M <- length(x0)
-    start_value <- func(x0)
+    start_value <- func(x0, ...)
     start_time <- Sys.time()
 
     theta_array <- matrix(0, no_runs, M)
@@ -94,7 +103,7 @@ RMPSH_opt <-
 
       array_of_values <- array(0, max_iter)
       for (i in 1:max_iter) {
-        current_lh <- func(transformation(theta, lb, ub))
+        current_lh <- func(transformation(theta, lb, ub), ...)
         possible_x_coords <-
           update_x(theta, epsilon, rho, phi)
         total_lh <- rep(1, 2 * M)
@@ -107,7 +116,7 @@ RMPSH_opt <-
           } else {
             candidate_theta[coord_number] <- possible_x_coords[kk]
             total_lh[kk] <-
-              func(transformation(candidate_theta, lb, ub))
+              func(transformation(candidate_theta, lb, ub), ...)
           }
         }
         new_min <- min(total_lh)
@@ -147,7 +156,7 @@ RMPSH_opt <-
       }
 
       theta_array[iii, ] <- t(theta)
-      each_run_solution[iii] <- func(transformation(theta, lb, ub))
+      each_run_solution[iii] <- func(transformation(theta, lb, ub), ...)
 
       if (iii > 1) {
         old_soln <- theta_array[iii - 1, ]
@@ -159,7 +168,7 @@ RMPSH_opt <-
     }
     end_time <- Sys.time()
     time_spent <- as.numeric(end_time - start_time)
-    final_value <- func(transformation(theta, lb, ub))
+    final_value <- func(transformation(theta, lb, ub), ...)
 
     paste0("Starting objective function value:  ", start_value)
     paste0("Final objective function value:  ", final_value)
