@@ -11,12 +11,12 @@ RMPSH_opt(
   ub,
   rho_1 = 2,
   rho_2 = 2,
-  phi = 10^(-6),
+  phi = 1e-06,
   no_runs = 1000,
   max_iter = 10000,
   s_init = 2,
-  tol_fun = 10^(-6),
-  tol_fun_2 = 10^(-20),
+  tol_fun = 1e-06,
+  tol_fun_2 = 1e-20,
   max_time = 36000,
   verbose = 0
 )
@@ -60,20 +60,23 @@ the optimal solution point.
 has an upper and lower bound.
 }
 \examples{
-g <- function(y)
-return(-20 * exp(-0.2 * sqrt(0.5 * (y[1] ^ 2 + y[2] ^ 2)))
- - exp(0.5 * (cos(2 * pi * y[1]) + cos(2 * pi * y[2])))
- + exp(1) + 20)
+g <- function(y) {
+  return(-20 * exp(-0.2 * sqrt(0.5 * (y[1]^2 + y[2]^2)))
+    - exp(0.5 * (cos(2 * pi * y[1]) + cos(2 * pi * y[2])))
+    + exp(1) + 20)
+}
 
-starting_point <- rep(1,10)
+starting_point <- rep(1, 10)
 g(starting_point)
-solution <- RMPSH_opt(starting_point,g, rep(-33,10), rep(33,10))
+solution <- RMPSH_opt(starting_point, g, rep(-33, 10), rep(33, 10))
 g(solution)
 
 # Will print the updates after each iteration
-RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), verbose = 1)
+RMPSH_opt(c(2, 4, 6, 2, 1), g, rep(-3, 5), rep(23, 5), verbose = 1)
 
 # Will exit and return result after 2 seconds
-g <- function(y) { return(sum(y^2)) }
-RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, verbose = 1)
+g <- function(y) {
+  return(sum(y^2))
+}
+RMPSH_opt(rep(2.3, 100), g, rep(-11, 100), rep(13, 100), max_time = 2, verbose = 1)
 }
