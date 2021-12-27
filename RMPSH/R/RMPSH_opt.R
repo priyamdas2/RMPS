@@ -19,7 +19,7 @@
 #' @param tol_fun_2 termination tolerance on the difference of norms of solution points in two consecutive runs. Default Value is \eqn{10^{-20}}.
 #' However, for expensive objective functions, for faster computation, user should set it to a larger value e.g, \eqn{10^{-6}}.
 #' @param max_time time alloted (in seconds) for execution of RMPSH. Default is 36000 secs (10 hours).
-#' @param print_output Binary Command to print optimized value of objective function after each interation, 0 = no print, 1 = print. Default is 0.
+#' @param verbose Binary Command to print optimized value of objective function after each interation, 0 = no print, 1 = print. Default is 0.
 #' @return the optimal solution point.
 #'
 #' @examples
@@ -33,21 +33,14 @@
 #' solution <- RMPSH_opt(starting_point,g, rep(-33,10), rep(33,10))
 #' g(solution)
 #'
-#' RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), print = 1)
 #' # Will print the updates after each iteration
+#' RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), verbose = 1)
 #'
-#'
-#' g <- function(y)
-#' return(sum(y^2))
-#' RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, print = 1)
 #' # Will exit and return result after 2 seconds
+#' g <- function(y) { return(sum(y^2)) }
+#' RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, verbose = 1)
 #'@name RMPSH_opt
 NULL
-
-Rcpp::sourceCpp('src/anti_transformation.cpp')
-Rcpp::sourceCpp('src/transformation.cpp')
-Rcpp::sourceCpp('src/update_x.cpp')
-
 
 #' @rdname RMPSH_opt
 #' @export
@@ -65,7 +58,7 @@ RMPSH_opt <-
            tol_fun = 10 ^ (-6),
            tol_fun_2 = 10 ^ (-20),
            max_time = 36000,
-           print_output = 0)
+           verbose = 0)
   {
 
     M <- length(x0)
@@ -115,7 +108,7 @@ RMPSH_opt <-
         for (kk in 1:(2 * M))
         {
           candidate_theta <- theta
-          coord_number <- ceil(kk / 2)
+          coord_number <- ceiling(kk / 2)
           if (possible_x_coords[kk] == theta[coord_number])
           {
             total_lh[kk] <- current_lh
@@ -131,12 +124,12 @@ RMPSH_opt <-
         if (new_min < current_lh)
         {
           position_new_min <- which.min(total_lh)
-          pos_of_theta <- ceil(position_new_min / 2)
+          pos_of_theta <- ceiling(position_new_min / 2)
           theta[pos_of_theta] <- possible_x_coords[position_new_min]
         }
         array_of_values[i] <- min(new_min, current_lh)
 
-        if (print_output == 1)
+        if (verbose == 1)
         {
           cat(
             '\n',

@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // anti_transformation
 NumericVector anti_transformation(NumericVector x, NumericVector lb, NumericVector ub);
 RcppExport SEXP _RMPSH_anti_transformation(SEXP xSEXP, SEXP lbSEXP, SEXP ubSEXP) {

@@ -18,7 +18,7 @@ RMPSH_opt(
   tol_fun = 10^(-6),
   tol_fun_2 = 10^(-20),
   max_time = 36000,
-  print_output = 0
+  verbose = 0
 )
 }
 \arguments{
@@ -50,7 +50,7 @@ However, for expensive objective functions, for faster computation, user should 
 
 \item{max_time}{time alloted (in seconds) for execution of RMPSH. Default is 36000 secs (10 hours).}
 
-\item{print_output}{Binary Command to print optimized value of objective function after each interation, 0 = no print, 1 = print. Default is 0.}
+\item{verbose}{Binary Command to print optimized value of objective function after each interation, 0 = no print, 1 = print. Default is 0.}
 }
 \value{
 the optimal solution point.
@@ -70,12 +70,10 @@ g(starting_point)
 solution <- RMPSH_opt(starting_point,g, rep(-33,10), rep(33,10))
 g(solution)
 
-RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), print = 1)
 # Will print the updates after each iteration
+RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), verbose = 1)
 
-
-g <- function(y)
-return(sum(y^2))
-RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, print = 1)
 # Will exit and return result after 2 seconds
+g <- function(y) { return(sum(y^2)) }
+RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, verbose = 1)
 }

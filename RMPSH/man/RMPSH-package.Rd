@@ -6,10 +6,6 @@
 \alias{RMPSH-package}
 \title{RMPSH: Recursive Modified Pattern Search on Hyper-rectangle}
 \description{
-RMPSH is developped for optimizing any blackbox/non-convex function on hyper-rectangular parameter space.
-}
-\author{
-\strong{Maintainer}: Priyam Das \email{pdas@ncsu.edu}
-
+RMPSH is developped for optimizing any blackbox/non-convex function on hyper-rectangular parameter space. It uses a variation of Pattern Search technique.
 }
 \keyword{internal}
