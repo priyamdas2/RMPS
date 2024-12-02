@@ -1,7 +1,5 @@
 Citing information : 
-Das, P. (2019+), Black-box optimization on hyper-rectangle using Recursive Modified Pattern
-Search and application to ROC-based Classification Problem, https://arxiv.org/pdf/1604.08616.pdf
-
+Das, P. Black-box optimization on hyper-rectangle using Recursive Modified Pattern Search and application to ROC-based Classification Problem. Sankhya B 85, 365–404 (2023). https://doi.org/10.1007/s13571-023-00312-w
 _____________________________________________________________________________________________________________
 
 Instructions to run R and MATLAB code:
