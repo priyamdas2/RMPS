@@ -1,6 +1,6 @@
-# RMPS and RMPSH: Recursive Modified Pattern Search
+# RMPSH: Recursive Modified Pattern Search on Hyperrectangle
 
-This repository provides implementations of the Recursive Modified Pattern Search (RMPS) algorithm for black-box optimization over hyper-rectangles, available in both MATLAB and R (via Rcpp). The method can be applied to high-dimensional, non-convex, and derivative-free optimization problems.
+This repository provides implementations of the Recursive Modified Pattern Search (RMPS) algorithm for black-box optimization over hyper-rectangles, available in both MATLAB and R (both source R file and package). The method can be applied to high-dimensional, non-convex, and derivative-free optimization problems.
 
 ---
 
