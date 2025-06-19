@@ -74,4 +74,3 @@ return(sum(y^2))
 # Will exit and return result after 2 seconds
 RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, print = 1)
 ```
-This will display intermediate optimization updates after each iteration when 'print_output' = 1 is specified.
