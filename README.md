@@ -67,6 +67,7 @@ g(solution)
 # Will print the updates after each iteration
 RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), print = 1)
 
+# g() minimizes when all coordinates are 0s
 g <- function(y)
 return(sum(y^2))
 
