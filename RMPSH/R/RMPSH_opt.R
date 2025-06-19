@@ -199,7 +199,7 @@ RMPSH_opt <-
     cat('\n','Starting objective function value: ', start_value)
     cat('\n','Final objective function value: ', final_value)
     cat('\n','Total time required (in secs): ', time_spent)
-    cat('\n','Obtained minima point is :  ', transformation(theta, lb, ub))
+    cat('\n','Obtained minima point is : ', transformation(theta, lb, ub))
     
     return(transformation(theta, lb, ub))
   }
