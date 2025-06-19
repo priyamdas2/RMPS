@@ -27,7 +27,7 @@ RMPS_matlab_code.m
 ```
 ### R
 
-To use RMPS in R via Rcpp:
+To use RMPS in R (without installing R package), source it as follows:
 
 ```r
 source("RMPS_rcode.R")
