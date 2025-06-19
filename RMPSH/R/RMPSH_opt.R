@@ -147,6 +147,7 @@ RMPSH_opt <-
             ', current fun value = ',
             array_of_values[i]
           )
+          cat('\n')
         }
 
         if (i > 1)
@@ -169,6 +170,7 @@ RMPSH_opt <-
 
         if (now_time_spent > max_time)
         {
+          cat('\n')
           print("Time's up")
           cat('\n','Starting objective function value: ', start_value)
           cat('\n','Final objective function value: ', current_lh)
