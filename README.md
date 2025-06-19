@@ -38,12 +38,12 @@ source("RMPS_rcode.R")
 To install and use the RMPSH R package (RMPS on Hyper-rectangles):
 
 ```r
-# Install from GitHub
 library(devtools)
-install_github("priyamdas2/RMPS/RMPSH")
+library(remotes)
+
+remotes::install_github("priyamdas2/RMPS", subdir = "RMPSH")
 library(RMPSH)
 
-# Access the main function
 ?RMPSH_opt
 ```
 
