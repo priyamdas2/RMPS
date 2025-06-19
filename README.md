@@ -51,18 +51,22 @@ library(RMPSH)
 
 ```r
 g <- function(y)
-  return(-20 * exp(-0.2 * sqrt(0.5 * (y[1]^2 + y[2]^2))) 
-         - exp(0.5 * (cos(2 * pi * y[1]) + cos(2 * pi * y[2]))) 
-         + exp(1) + 20)
+return(-20 * exp(-0.2 * sqrt(0.5 * (y[1] ^ 2 + y[2] ^ 2)))
+ - exp(0.5 * (cos(2 * pi * y[1]) + cos(2 * pi * y[2])))
+ + exp(1) + 20)
 
-starting_point <- rep(1, 10)
+starting_point <- rep(1,10)
 g(starting_point)
-
-# Run RMPSH on 10D hypercube
-solution <- RMPSH_opt(starting_point, g, rep(-33, 10), rep(33, 10))
+solution <- RMPSH_opt(starting_point,g, rep(-33,10), rep(33,10))
 g(solution)
 
-# Another run with verbose output
-RMPSH_opt(c(2, 4, 6, 2, 1), g, rep(-3, 5), rep(23, 5), print = 1)
+# Will print the updates after each iteration
+RMPSH_opt(c(2,4,6,2,1),g,rep(-3,5), rep(23,5), print = 1)
+
+g <- function(y)
+return(sum(y^2))
+
+# Will exit and return result after 2 seconds
+RMPSH_opt(rep(2.3,100),g, rep(-11,100), rep(13,100), max_time = 2, print = 1)
 ```
 This will display intermediate optimization updates after each iteration when 'print_output' = 1 is specified.
