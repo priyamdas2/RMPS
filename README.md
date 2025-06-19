@@ -60,6 +60,7 @@ return(-20 * exp(-0.2 * sqrt(0.5 * (y[1] ^ 2 + y[2] ^ 2)))
 starting_point <- rep(1,10)
 g(starting_point)
 solution <- RMPSH_opt(starting_point,g, rep(-33,10), rep(33,10))
+
 # Value of g() only depends on frist two coordinates, minimized if first two coordinates are 0
 g(solution)
 
