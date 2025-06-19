@@ -25,9 +25,9 @@ To use RMPS in MATLAB:
 % Run this script to optimize any function using RMPS
 RMPS_matlab_code.m
 ```
-### R
+### R (without installing R package)
 
-To use RMPS in R (without installing R package), source it as follows:
+To use RMPSH in R, source it as follows:
 
 ```r
 source("RMPS_rcode.R")
