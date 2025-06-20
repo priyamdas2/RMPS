@@ -147,7 +147,6 @@ RMPSH_opt <-
             ', current fun value = ',
             array_of_values[i]
           )
-          cat('\n')
         }
 
         if (i > 1)
