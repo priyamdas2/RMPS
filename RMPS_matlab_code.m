@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%% Citation information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Das, P. (2023), Black-box optimization on hyper-rectangle using Recursive Modified Pattern
-% Search and application to ROC-based Classification Problem, Indian Journal of Statistics (Sankhya B), 85, 365–404
+% Search and application to ROC-based Classification Problem, Indian Journal of Statistics (Sankhya B), 85, 365–404.
 
 
 clear all
